@@ -47,8 +47,8 @@
 	<distributionManagement>
 		<snapshotRepository>
 			<id>deployment</id>
-			<name>Internal Snapshot Releases</name>
-			<url>http://104.197.53.105:8081/repository/maven-snapshots/</url>
+			<name>githubPomProject</name>
+			<url>http://104.154.163.100:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
     </distributionManagement>
 </project>
