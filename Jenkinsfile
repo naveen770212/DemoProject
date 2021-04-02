@@ -1,25 +1,46 @@
- node {
-   
-      stage('Git clone') {
-        git 'https://github.com/kigrepo/ks.git'
+node {
+stage('gitclone') { 
+        
+        git credentialsId: 'gitaccount', url: 'https://github.com/naveen770212/DemoProject.git'
+        
     }
-       stage('clean') {
-       sh 'mvn clean'
+    stage('Build clean') {
+
+      sh 'mvn clean'
+         
     }
-       stage('compile') {
-       sh 'mvn compile'
+  stage('sonarqube code scan') {
+
+      sh 'mvn sonar:sonar -Dsonar.host.url=http://34.70.86.196:9000 -Dsonar.login=7997dc722b54cd772f81f0b8ff9465128b52dbc7'
+         
     }
-	   stage('sonarqube code scan') {
-	   
-       sh 'mvn sonar:sonar -Dsonar.host.url=http://34.70.86.196:9000 -Dsonar.login=7997dc722b54cd772f81f0b8ff9465128b52dbc7'
+	
+	stage('Build compile') {
+
+      sh 'mvn compile'
+         
     }
-	stage('test') {
-        sh 'mvn test'
+  stage('Build test') {
+
+      sh 'mvn test'
+         
     }
-	stage('package') {
-        sh 'mvn package'
+  stage('Build package') {
+
+      sh 'mvn package'
+         
     }
-	stage('deploy') {
-        sh 'mvn deploy'
+  
+  
+  stage('Build deploy') {
+
+      sh 'mvn deploy'
+    
+    
+     
     }
 }
+
+
+
+
